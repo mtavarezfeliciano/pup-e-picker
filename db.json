@@ -1,143 +1,115 @@
 {
   "dogs": [
     {
-      "name": "Brannon",
-      "image": "/assets/chihuahua.avif",
-      "description": "ha eager now easily supervisor hmph discard um",
+      "name": "Izaiah",
+      "image": "/assets/boxer.png",
+      "description": "above until foolishly honorable the",
       "isFavorite": true,
       "id": 0
     },
     {
-      "name": "Gavin",
-      "image": "/assets/cowardly.png",
-      "description": "ill-fated emulsify astride capital whoa glut once coast",
-      "isFavorite": true,
+      "name": "Rhiannon",
+      "image": "/assets/blue-heeler.png",
+      "description": "imperfect big-hearted where syndicate veterinarian about incidentally",
+      "isFavorite": false,
       "id": 1
     },
     {
-      "name": "Abigail",
-      "image": "/assets/boxer.png",
-      "description": "limply yahoo yum consciousness courtroom ugh justly at",
+      "name": "Zora",
+      "image": "/assets/blue-heeler.png",
+      "description": "oval wherever where a um whoa till",
       "isFavorite": false,
       "id": 2
     },
     {
-      "name": "Dawn",
-      "image": "/assets/boxer.png",
-      "description": "daikon generously calculating an cautiously",
-      "isFavorite": true,
+      "name": "Dimitri",
+      "image": "/assets/dalmation.png",
+      "description": "cramp against but helplessly roust",
+      "isFavorite": false,
       "id": 3
     },
     {
-      "name": "Roberta",
-      "image": "/assets/corgi.png",
-      "description": "whereas alongside intensely furthermore which",
+      "name": "Enoch",
+      "image": "/assets/blue-heeler.png",
+      "description": "smoothly afore amongst blight tame",
       "isFavorite": false,
       "id": 4
     },
     {
-      "name": "Audra",
+      "name": "Josianne",
       "image": "/assets/dalmation.png",
-      "description": "cow fraternize exactly so vex",
-      "isFavorite": false,
-      "id": 5
-    },
-    {
-      "name": "Lafayette",
-      "image": "/assets/corgi.png",
-      "description": "towards coolly squiggly calculating politely cloudy torso eek",
+      "description": "worriedly psst aw trolley if er concern",
       "isFavorite": false,
       "id": 6
     },
     {
-      "name": "Ron",
+      "name": "Chelsea",
       "image": "/assets/chihuahua.avif",
-      "description": "well-lit yawningly hence outlook until",
+      "description": "gah solemnly over mmm once journalist lest foal",
       "isFavorite": true,
       "id": 7
     },
     {
-      "name": "Elton",
-      "image": "/assets/corgi.png",
-      "description": "sculptural against yum against embolden disunite however",
-      "isFavorite": false,
+      "name": "Felicita",
+      "image": "/assets/blue-heeler.png",
+      "description": "knowingly lest painting frightfully pressroom blend hard",
+      "isFavorite": true,
       "id": 8
     },
     {
-      "name": "Toney",
-      "image": "/assets/corgi.png",
-      "description": "compromise kohlrabi season fleece shabby incarnate fooey",
+      "name": "Ariane",
+      "image": "/assets/chihuahua.avif",
+      "description": "present past via hmph yuck furthermore whenever than",
       "isFavorite": true,
       "id": 9
     },
     {
-      "name": "Flavio",
-      "image": "/assets/boxer.png",
-      "description": "who that except phew octave",
+      "name": "Jody",
+      "image": "/assets/chihuahua.avif",
+      "description": "afraid pleasing sans now agriculture lope caring",
       "isFavorite": true,
       "id": 10
     },
     {
-      "name": "Dereck",
-      "image": "/assets/cowardly.png",
-      "description": "pish eulogise procreate subgroup powerfully thrill like loosely",
-      "isFavorite": false,
+      "name": "Keanu",
+      "image": "/assets/boxer.png",
+      "description": "within naturally a melody the aha apropos atelier",
+      "isFavorite": true,
       "id": 11
     },
     {
-      "name": "Marie",
-      "image": "/assets/cowardly.png",
-      "description": "lyre pro neat heavily fooey radiant fawn",
-      "isFavorite": false,
-      "id": 12
-    },
-    {
-      "name": "Blaze",
-      "image": "/assets/corgi.png",
-      "description": "interest incise accept whoa quarrelsome ack declaration alongside",
-      "isFavorite": false,
+      "name": "Trey",
+      "image": "/assets/dalmation.png",
+      "description": "fantasise angrily cereal brr ambiguity",
+      "isFavorite": true,
       "id": 13
     },
     {
-      "name": "Brice",
-      "image": "/assets/dalmation.png",
-      "description": "next blah crossly within unfortunate",
-      "isFavorite": true,
-      "id": 14
-    },
-    {
-      "name": "Elliot",
-      "image": "/assets/cowardly.png",
-      "description": "neglected umpire powerfully scarcely furthermore",
+      "name": "Laurence",
+      "image": "/assets/boxer.png",
+      "description": "mysteriously by merrily what onto shrill mostly",
       "isFavorite": true,
       "id": 15
     },
     {
-      "name": "Santiago",
-      "image": "/assets/boxer.png",
-      "description": "the gutter aw although modulo",
-      "isFavorite": true,
-      "id": 16
-    },
-    {
-      "name": "Jan",
+      "name": "Dillon",
       "image": "/assets/cowardly.png",
-      "description": "infamous plus hm yieldingly gosh fooey eek except",
-      "isFavorite": false,
+      "description": "furthermore an probe furthermore barring drat vote midst",
+      "isFavorite": true,
       "id": 17
     },
     {
-      "name": "Felicita",
-      "image": "/assets/chihuahua.avif",
-      "description": "stigmatize lightly stink graduate deconsecrate",
+      "name": "Ted",
+      "image": "/assets/cowardly.png",
+      "description": "satisfied how trim ew swamp",
       "isFavorite": true,
       "id": 18
     },
     {
-      "name": "Bethany",
-      "image": "/assets/chihuahua.avif",
-      "description": "incidentally amidst sometimes second circa",
-      "isFavorite": false,
+      "name": "Beryl",
+      "image": "/assets/cowardly.png",
+      "description": "since thin bah vastly as drain sinful",
+      "isFavorite": true,
       "id": 19
     }
   ]

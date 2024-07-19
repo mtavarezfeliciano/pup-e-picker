@@ -1,46 +1,37 @@
-import { DogCard } from "../Shared/DogCard";
 import { TDog } from "../types";
+import { DogCard } from "../Shared/DogCard";
+
+type Handler = (dogId: number) => void;
 
 // Right now these dogs are constant, but in reality we should be getting these from our server
+// Todo: Refactor to get rid of props (THERE SHOULD BE NO PROPS DRILLING ON THIS COMPONENT)
 export const FunctionalDogs = ({
-  allDogs,
-  isLoading,
+  dogs,
   deleteDog,
-  updateDog,
+  unfavoriteDog,
+  favoriteDog,
+  isLoading,
 }: {
-  allDogs: TDog[];
+  dogs: TDog[];
+  deleteDog: Handler;
+  unfavoriteDog: Handler;
+  favoriteDog: Handler;
   isLoading: boolean;
-  deleteDog: (id: number) => void;
-  updateDog: (dogId: number, isFavorite: boolean) => void;
 }) => {
   return (
     //  the "<> </>"" are called react fragments, it's like adding all the html inside
     // without adding an actual html element
     <>
-      {allDogs.map((dog) => {
-        return (
-          <DogCard
-            dog={{
-              id: dog.id,
-              image: dog.image,
-              description: dog.description,
-              isFavorite: dog.isFavorite,
-              name: dog.name,
-            }}
-            key={dog.id}
-            onTrashIconClick={() => {
-              deleteDog(dog.id);
-            }}
-            onHeartClick={() => {
-              updateDog(dog.id, dog.isFavorite);
-            }}
-            onEmptyHeartClick={() => {
-              updateDog(dog.id, dog.isFavorite);
-            }}
-            isLoading={isLoading}
-          />
-        );
-      })}
+      {dogs.map((dog) => (
+        <DogCard
+          dog={dog}
+          key={dog.id}
+          onTrashIconClick={() => deleteDog(dog.id)}
+          onHeartClick={() => unfavoriteDog(dog.id)}
+          onEmptyHeartClick={() => favoriteDog(dog.id)}
+          isLoading={isLoading}
+        />
+      ))}
     </>
   );
 };

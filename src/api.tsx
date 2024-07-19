@@ -1,59 +1,83 @@
 import { TDog } from "./types";
+import { v4 as uuidV4 } from "uuid";
+
+const getUniqueId = () => {
+  const userIdFromLocalStorage = localStorage.getItem(
+    "pup-e-picker-user-id"
+  );
+  if (!userIdFromLocalStorage) {
+    const newId = (uuidV4 as () => string)();
+    localStorage.setItem("pup-e-picker-user-id", newId);
+    return newId;
+  }
+  return userIdFromLocalStorage;
+};
+
+const getAuthHeader = () => ({
+  "pup-e-picker-user-id": getUniqueId(),
+});
 
 export const baseUrl = "http://localhost:3000";
 
 export const Requests = {
-  // should return a promise with all dogs in the database
-  getAllDogs: async () => {
-    return await fetch(`${baseUrl}/dogs`).then((res) => res.json());
-  },
-  // should create a dog in the database from a partial dog object
-  // and return a promise with the result
-  postDog: (dog: Partial<TDog>): Promise<TDog> => { // Update the parameter type to Partial<TDog>
-    return fetch(`${baseUrl}/dogs`, {
-      method: "POST",
+  getAllDogs: () =>
+    fetch(`${baseUrl}/dogs`, {
+      headers: {
+        ...getAuthHeader(),
+      },
+    })
+      .then((response) => response.json()),
+
+  postDog: (dog: Omit<TDog, "id" | "isFavorite">) =>
+    fetch(`${baseUrl}/dogs`, {
+      method: "post",
       headers: {
         "Content-Type": "application/json",
+        ...getAuthHeader(),
       },
-      body: JSON.stringify(dog),
-    })
-      .then((res) => res.json())
-      .catch((err) => {
-        console.error(err);
-        throw err;
-      });
-  },
-
-  // should delete a dog from the database
-  deleteDog: async (dogId: number): Promise<void> => {
-    try {
-      const response = await fetch(`${baseUrl}/dogs/${dogId}`, {
-        method: "DELETE",
-      });
+      body: JSON.stringify({ ...dog, isFavorite: false }),
+    }).then((response) => {
       if (!response.ok) {
-        throw new Error(`Failed to delete dog with id ${dogId}`);
+        throw new Error("Failed to create dog");
       }
-    } catch (error) {
-      console.error(`Error deleting dog with id ${dogId}:`, error);
-      throw error;
-    }
-  },
+      return response;
+    }),
 
-  updateDog: async (dogId: number, updatedData: Partial<TDog>): Promise<TDog> => {
-    try {
-      const res = await fetch(`${baseUrl}/dogs/${dogId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedData),
-      });
-      return await res.json();
-    } catch (err) {
-      console.error(`Error updating dog with id ${dogId}`, err);
-      throw err;
-    }
-  },
+  deleteDog: (dogId: number) =>
+    fetch(`${baseUrl}/dogs/${dogId}`, {
+      method: "delete",
+      headers: {
+        ...getAuthHeader(),
+      },
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to create dog");
+      }
+      return response;
+    }),
+
+  updateDog: ({
+    dogId,
+    isFavorite,
+  }: {
+    dogId: number;
+    isFavorite: boolean;
+  }) =>
+    fetch(`${baseUrl}/dogs/${dogId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        ...getAuthHeader(),
+      },
+      method: "PATCH",
+      body: JSON.stringify({
+        isFavorite,
+      }),
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error("could not update dog");
+      }
+      return response;
+    }),
 
   // Just a dummy function for use in the playground
   dummyFunction: () => {

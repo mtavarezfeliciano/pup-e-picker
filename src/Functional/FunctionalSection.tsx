@@ -1,116 +1,68 @@
 import { Link } from "react-router-dom";
-import { FunctionalDogs } from "./FunctionalDogs";
-import { FunctionalCreateDogForm } from "./FunctionalCreateDogForm";
-import { TDog, UsingComponent } from "../types";
-import { useState } from "react";
 
 export const FunctionalSection = ({
-  createDog,
-  allDogs,
-  isLoading,
-  deleteDog,
-  updateDog,
+  children,
+  favoriteDogCount,
+  label,
+  onClickCreateDog,
+  onClickFavorited,
+  onClickUnfavorited,
+  showComponent,
+  unfavoriteDogCount,
 }: {
-  createDog: (dog: Omit<TDog, "id">) => void;
-  isLoading: boolean;
-  allDogs: TDog[];
-  deleteDog: (dogId: number) => void;
-  updateDog: (dogId: number, isFavorite: boolean) => void;
+  label: string;
+  children: JSX.Element | JSX.Element[];
+  onClickFavorited: () => void;
+  onClickUnfavorited: () => void;
+  onClickCreateDog: () => void;
+  showComponent: string;
+  favoriteDogCount: number;
+  unfavoriteDogCount: number;
 }) => {
-  const favoriteDogs = allDogs.filter((dog) => dog.isFavorite);
-  const unFavoriteDogs = allDogs.filter((dog) => !dog.isFavorite);
-
-  const [showComponent, setShowComponent] =
-    useState<UsingComponent>("all-dogs");
-
-  const toggleShowComponent = (input: UsingComponent) => {
-    if (input === "all-dogs") return setShowComponent("all-dogs");
-    if (input === showComponent) return setShowComponent("all-dogs");
-    return setShowComponent(input);
-  };
-
   return (
     <section id="main-section">
       <div className="container-header">
-        <div className="container-label">Dogs: </div>
-        <Link to={"/"} className="btn">
-          Home
-        </Link>
-        <Link to={"/class"} className="btn">
+        <div className="container-label">{label}</div>
+        <Link className="btn" to={"/class"}>
           Change to Class
         </Link>
-        <Link to={"/playground"} className="btn">
-          Playground
-        </Link>
-
         <div className="selectors">
+          {/* This should display the favorited count */}
           <div
             className={`selector ${
-              showComponent === "favorited-dogs" ? "active" : ""
+              showComponent === "favorite-dogs"
+                ? "active"
+                : ""
             }`}
-            onClick={() => {
-              toggleShowComponent("favorited-dogs");
-            }}
+            onClick={onClickFavorited}
           >
-            favorited ( {favoriteDogs.length} )
+            favorited ( {favoriteDogCount} )
           </div>
 
           {/* This should display the unfavorited count */}
           <div
             className={`selector ${
-              showComponent === "unfavorited-dogs" ? "active" : ""
+              showComponent === "unfavorite-dogs"
+                ? "active"
+                : ""
             }`}
-            onClick={() => {
-              toggleShowComponent("unfavorited-dogs");
-            }}
+            onClick={onClickUnfavorited}
           >
-            unfavorited ( {unFavoriteDogs.length} )
+            unfavorited ( {unfavoriteDogCount} )
           </div>
-
           <div
             className={`selector ${
-              showComponent === "create-dog-form" ? "active" : ""
+              showComponent === "create-dog-form"
+                ? "active"
+                : ""
             }`}
-            onClick={() => {
-              toggleShowComponent("create-dog-form");
-            }}
+            onClick={onClickCreateDog}
           >
             create dog
           </div>
         </div>
       </div>
-      <div className="content-container">
-        {showComponent === "all-dogs" && (
-          <FunctionalDogs
-            allDogs={allDogs}
-            isLoading={isLoading}
-            deleteDog={deleteDog}
-            updateDog={updateDog}
-          />
-        )}
-        {showComponent === "favorited-dogs" && (
-          <FunctionalDogs
-            allDogs={favoriteDogs}
-            isLoading={isLoading}
-            deleteDog={deleteDog}
-            updateDog={updateDog}
-          />
-        )}
-        {showComponent === "unfavorited-dogs" && (
-          <FunctionalDogs
-            allDogs={unFavoriteDogs}
-            isLoading={isLoading}
-            deleteDog={deleteDog}
-            updateDog={updateDog}
-          />
-        )}
-        {showComponent === "create-dog-form" && (
-          <FunctionalCreateDogForm
-            createDog={createDog}
-            isLoading={isLoading}
-          />
-        )}
-      </div>
+      <div className="content-container">{children}</div>
     </section>
   );
 };

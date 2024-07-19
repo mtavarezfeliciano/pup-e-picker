@@ -10,9 +10,3 @@ export type TDog = {
 export type Props = {
     allDogs: TDog[];
 };
-
-export type UsingComponent =
-  | "all-dogs"
-  | "favorited-dogs"
-  | "unfavorited-dogs"
-  | "create-dog-form";
